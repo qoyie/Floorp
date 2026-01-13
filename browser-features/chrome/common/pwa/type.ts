@@ -67,6 +67,7 @@ export type LegacyPWAEntry = {
 
 export const zPwaConfig = t.type({
   showToolbar: t.boolean,
+  allowTabs: t.boolean,
 });
 
 export type TPwaConfig = t.TypeOf<typeof zPwaConfig>;

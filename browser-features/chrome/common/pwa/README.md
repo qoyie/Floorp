@@ -13,7 +13,6 @@ For example, ManifestProcesser.ts is written with reference to Firefox code, and
 The PWA feature consists mainly of two parts:
 
 1. **Frontend part** (`src/apps/main/core/common/pwa/`)
-
    - UI elements (SsbPageAction, SsbPanelView)
    - PWA window management
    - High-level service API
@@ -76,3 +75,10 @@ To extend the PWA functionality, you mainly need to understand the following fil
 - `SsbPageAction.tsx`/`SsbPanelView.tsx`: Customizing UI elements
 
 To add support for a new platform, implement it in the `supports/` directory.
+
+## Configuration
+
+PWA behavior is driven by the JSON stored in the `floorp.browser.ssb.config` pref:
+
+- `showToolbar` (default: `true`): show or hide the navigation toolbar inside PWA windows.
+- `allowTabs` (default: `false`): enable tabbed browsing UI and keep the standard toolbar interactions inside PWA windows.

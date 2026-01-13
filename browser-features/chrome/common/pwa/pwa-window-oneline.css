@@ -1,0 +1,57 @@
+/*
+ * One-line layout for PWA windows when tabs are enabled.
+ * Places TabsToolbar and nav-bar side-by-side without collapsing the window.
+ */
+
+:root[taskbartab] #navigator-toolbox {
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto auto;
+  align-items: stretch;
+  width: 100%;
+}
+
+:root[taskbartab] #titlebar {
+  grid-column: 1;
+  grid-row: 1;
+  display: flex;
+  align-items: stretch;
+}
+
+:root[taskbartab] #TabsToolbar {
+  flex: 0 1 auto;
+  min-width: fit-content;
+  padding-inline: 4px;
+}
+
+:root[taskbartab] #nav-bar {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: center;
+  min-width: 280px;
+}
+
+:root[taskbartab] #nav-bar-customization-target {
+  flex: 1 1 auto;
+  min-width: 240px;
+}
+
+:root[taskbartab] .titlebar-placeholder,
+:root[taskbartab] #TabsToolbar .titlebar-spacer,
+:root[taskbartab] #TabsToolbar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+:root[taskbartab] #tabbrowser-tabs {
+  --tab-min-width: 70px;
+  --tab-min-height: 30px;
+}
+
+:root[taskbartab] #tabbrowser-tabs[overflow="true"] .tabbrowser-tab {
+  min-width: 0;
+}
+
+:root[taskbartab] #navigator-toolbox:-moz-window-inactive {
+  filter: saturate(0.95);
+}

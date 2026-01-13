@@ -441,6 +441,8 @@
         "otherSettings": "その他の設定",
         "showToolbar": "ツールバーを表示",
         "showToolbarDescription": "プログレッシブウェブアプリのウィンドウにツールバーを表示します",
+        "allowTabs": "PWA ウィンドウでタブを有効化",
+        "allowTabsDescription": "PWA ウィンドウで標準のツールバーを残したままタブ付きブラウジングを利用します",
         "installedApps": "インストール済みのアプリ",
         "noInstalledApps": "プログレッシブウェブアプリがインストールされていません",
         "removeApp": "アプリを削除",

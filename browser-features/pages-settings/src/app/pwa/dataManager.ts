@@ -29,7 +29,8 @@ export async function getPwaSettings(): Promise<TProgressiveWebAppFormData> {
 
   return {
     enabled,
-    ...configs,
+    showToolbar: configs.showToolbar ?? true,
+    allowTabs: configs.allowTabs ?? false,
   };
 }
 

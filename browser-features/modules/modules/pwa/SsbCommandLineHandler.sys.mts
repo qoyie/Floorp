@@ -35,6 +35,17 @@ function getWindowFeatures(displayMode?: string): string {
   }
 }
 
+function getAllowTabs(): boolean {
+  try {
+    const raw = Services.prefs.getStringPref("floorp.browser.ssb.config", "{}");
+    const parsed = JSON.parse(raw);
+    return parsed?.allowTabs === true;
+  } catch (e) {
+    console.warn("[SsbRunnerUtils] Failed to read allowTabs pref", e);
+    return false;
+  }
+}
+
 type TQueryInterface = <T extends nsIID>(aIID: T) => nsQIResult<T>;
 
 export class SsbRunnerUtils {
@@ -107,9 +118,14 @@ export class SsbRunnerUtils {
       Ci.nsIWritablePropertyBag2,
     );
     extraOptions.setPropertyAsAString("ssbid", ssb.id);
-    // Set taskbartab attribute to leverage SessionStore's existing handling
-    // This excludes PWA windows from session restore and treats them like TaskBarTabs
+    const allowTabs = getAllowTabs();
+
+    // Always set taskbartab so SessionStore excludes PWA windows from restore.
+    // UI overrides for tabbed mode are handled in the chrome layer.
     extraOptions.setPropertyAsAString("taskbartab", ssb.id);
+
+    // Expose allowTabs to the chrome window if needed by consumers
+    extraOptions.setPropertyAsBool("floorpAllowTabs", allowTabs);
 
     // Create URL argument
     const url = Cc["@mozilla.org/supports-string;1"].createInstance(

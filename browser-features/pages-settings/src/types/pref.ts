@@ -122,6 +122,7 @@ export type PanelSidebarFormData = t.TypeOf<typeof zPanelSidebarFormData>;
 export const zProgressiveWebAppFormData = t.type({
   enabled: t.boolean,
   showToolbar: t.boolean,
+  allowTabs: t.boolean,
 });
 
 export const zProgressiveWebAppObject = t.record(

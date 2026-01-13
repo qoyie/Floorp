@@ -9,6 +9,7 @@ export const defaultEnabled = true;
 
 const defaultConfig: TPwaConfig = {
   showToolbar: true,
+  allowTabs: false,
 };
 
 export const strDefaultConfig = JSON.stringify(defaultConfig);

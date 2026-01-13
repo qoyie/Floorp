@@ -64,20 +64,38 @@ export function Preferences() {
             <h3 className="text-base font-medium mb-2">
               {t("progressiveWebApp.otherSettings")}
             </h3>
-            <div className="flex items-center justify-between gap-2">
-              <div className="space-y-1">
-                <label htmlFor="show-toolbar" className="font-medium">
-                  {t("progressiveWebApp.showToolbar")}
-                </label>
-                <p className="text-sm text-base-content/70">
-                  {t("progressiveWebApp.showToolbarDescription")}
-                </p>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between gap-2">
+                <div className="space-y-1">
+                  <label htmlFor="show-toolbar" className="font-medium">
+                    {t("progressiveWebApp.showToolbar")}
+                  </label>
+                  <p className="text-sm text-base-content/70">
+                    {t("progressiveWebApp.showToolbarDescription")}
+                  </p>
+                </div>
+                <Switch
+                  id="show-toolbar"
+                  checked={!!getValues("showToolbar")}
+                  onChange={(e) => setValue("showToolbar", e.target.checked)}
+                />
               </div>
-              <Switch
-                id="show-toolbar"
-                checked={!!getValues("showToolbar")}
-                onChange={(e) => setValue("showToolbar", e.target.checked)}
-              />
+
+              <div className="flex items-center justify-between gap-2">
+                <div className="space-y-1">
+                  <label htmlFor="allow-tabs" className="font-medium">
+                    {t("progressiveWebApp.allowTabs")}
+                  </label>
+                  <p className="text-sm text-base-content/70">
+                    {t("progressiveWebApp.allowTabsDescription")}
+                  </p>
+                </div>
+                <Switch
+                  id="allow-tabs"
+                  checked={!!getValues("allowTabs")}
+                  onChange={(e) => setValue("allowTabs", e.target.checked)}
+                />
+              </div>
             </div>
           </div>
 
